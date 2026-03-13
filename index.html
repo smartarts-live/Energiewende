@@ -14,41 +14,79 @@
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #121212; /* Dunkler Hintergrund */
+            background-color: #121212;
             color: #ffffff;
         }
 
-        /* Der Haupt-Container füllt den ganzen Bildschirm */
         .swiper {
             width: 100%;
             height: 100%;
         }
 
-        /* Styling der einzelnen Slides */
+        /* Grundlayout für jeden Slide */
         .swiper-slide {
-            text-align: center;
-            font-size: 18px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 30px;
             box-sizing: border-box;
+            text-align: left; /* Linksbündig wirkt bei längeren Texten oft seriöser */
         }
 
-        /* Beispiel-Klassen für deine Texte */
+        /* Die 3-Teile-Struktur */
         .slide-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #4CAF50; /* Grün für das Thema */
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 400px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
         }
 
         .slide-text {
             font-size: 16px;
-            line-height: 1.5;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            width: 100%;
             max-width: 400px;
+            color: #f0f0f0;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
         }
+
+        .slide-fazit {
+            font-size: 16px;
+            font-weight: 600;
+            padding: 15px;
+            width: 100%;
+            max-width: 370px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* --- FARBKONZEPT (THEMEN) --- */
+        
+        /* Kapitel 1: Intro (Orange/Rot für Alarm/Krise) */
+        .theme-intro .slide-title { color: #ff9800; }
+        .theme-intro .slide-fazit { border-left: 5px solid #ff9800; background: rgba(255, 152, 0, 0.15); }
+
+        /* Kapitel 2: Windkraft (Blau für Luft/Himmel) */
+        .theme-wind .slide-title { color: #4dabf7; }
+        .theme-wind .slide-fazit { border-left: 5px solid #4dabf7; background: rgba(77, 171, 247, 0.15); }
+
+        /* Kapitel 3: E-Auto (Grün für Ökologie/Zukunft) */
+        .theme-auto .slide-title { color: #4caf50; }
+        .theme-auto .slide-fazit { border-left: 5px solid #4caf50; background: rgba(76, 175, 80, 0.15); }
+
+        /* Kapitel 4: Stromnetz (Gelb für Energie/Licht) */
+        .theme-grid .slide-title { color: #fcc419; }
+        .theme-grid .slide-fazit { border-left: 5px solid #fcc419; background: rgba(252, 196, 25, 0.15); }
+
+        /* Positionierung der Fortschrittspunkte anpassen */
+        .swiper-pagination-bullet { background: #ffffff; opacity: 0.5; }
+        .swiper-pagination-bullet-active { opacity: 1; }
+
     </style>
 </head>
 <body>
@@ -56,54 +94,55 @@
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
             
-            <div class="swiper-slide">
+            <div class="swiper-slide theme-intro" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('images/intro-collage.jpg'); background-size: cover; background-position: center;">
                 <div class="slide-title">Schon wieder Energiekrise?</div>
-                <div class="slide-text">Nach dem Ukraine-Schock trifft uns durch den Krieg im Iran nun die nächste Ölkrise mit drohender Inflation. Unsere Abhängigkeit von fossilen Brennstoffen schlägt wieder voll auf den Geldbeutel durch – genau wie in den 70er Jahren, als die Idee der Energiewende entstand. Doch warum gab es so lange harten Widerstand gegen Alternativen? Welche Warnungen waren berechtigt und was ist längst als Mythos entlarvt? Ein Faktencheck. (Swipe für mehr 👉)</div>
+                <div class="slide-text">Nach dem Ukraine-Schock trifft uns durch den Krieg im Iran nun die nächste Ölkrise mit drohender Inflation. An der Zapfsäule richtet sich der Frust oft gegen den Staat und die Steuern. Doch der wahre Preistreiber ist der globale, unberechenbare Markt.</div>
+                <div class="slide-fazit">Fazit: Hätten wir die Warnungen der 70er ernst genommen, wären wir heute immun gegen Ölpreisschocks.</div>
             </div>
 
-            <div class="swiper-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('images/gasstation.jpg'); background-size: cover; background-position: center;">
-                <div class="slide-title" style="color: #ffffff; text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">Frust an der Zapfsäule</div>
-                <div class="slide-text" style="color: #e0e0e0; text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">
-                    Wir alle spüren es gerade schmerzhaft: Die Preise klettern wieder. Oft richtet sich der Ärger schnell gegen Steuern. Doch der wahre Preistreiber ist der globale Markt – aktuell massiv verschärft durch den Konflikt im Iran. Unsere Abhängigkeit vom Öl macht uns leider verletzlich für Krisen am anderen Ende der Welt.
-                </div>
+            <div class="swiper-slide theme-wind" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('images/wind-collage.jpg'); background-size: cover; background-position: center;">
+                <div class="slide-title">Widerstand gegen Windkraft</div>
+                <div class="slide-text">Lange Zeit galten Windräder als lebensgefährliche „Vogelschredder“ und Verursacher von krankmachendem Infraschall. Diese Argumente blockierten den Ausbau massiv. Doch die harte wissenschaftliche Realität zeichnet ein völlig anderes Bild.</div>
+                <div class="slide-fazit">Zusammenfassung: Emotionale Behauptungen hielten lange Zeit der faktenbasierten Prüfung nicht stand.</div>
             </div>
 
-            <div class="swiper-slide">
-                <div class="slide-title">Ein Blick zurück</div>
-                <div class="slide-text">
-                    Schon in den 70ern ahnten wir: Wer sich von Öl-Importen löst, gewinnt Sicherheit. Hätten wir die Energie- und Verkehrswende in den letzten Jahrzehnten konsequent gemeinsam angepackt, wären wir heute deutlich unabhängiger von solchen globalen Preisschocks. Es geht dabei nicht um Verzicht, sondern um unsere eigene Stabilität.
-                </div>
+            <div class="swiper-slide theme-wind" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('images/wind-birds.jpg'); background-size: cover; background-position: center;">
+                <div class="slide-title">Die wahre Gefahr für Vögel</div>
+                <div class="slide-text">Laut NABU sterben in Deutschland jährlich ca. 100.000 Vögel durch Windräder. Jeder ist einer zu viel, doch die Relationen fehlen oft: Über 100 Millionen Vögel sterben an Glasscheiben und Gebäuden. Bis zu 200 Millionen werden das Opfer von Hauskatzen.</div>
+                <div class="slide-fazit">Fazit: Die größte Bedrohung für die Artenvielfalt ist nicht die Windkraft, sondern das Aussterben von Ökosystemen durch Erwärmung.</div>
             </div>
 
-            <div class="swiper-slide">
-                <div class="slide-title">Der Weg nach vorn</div>
-                <div class="slide-text">
-                    Die gute Nachricht: Wir haben die Lösung selbst in der Hand. Heimische erneuerbare Energien und eine moderne, elektrische Mobilität machen uns krisenfest. Strom aus Wind und Sonne schickt keine unberechenbaren Rechnungen. Die Energiewende ist unser bestes Schutzschild für eine sichere und bezahlbare Zukunft.
-                </div>
+            <div class="swiper-slide theme-wind" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('images/wind-infraschall.jpg'); background-size: cover; background-position: center;">
+                <div class="slide-title">Der 1.000-fache Rechenfehler</div>
+                <div class="slide-text">Jahrelang warnte die Bundesbehörde BGR vor gesundheitsschädlichem Infraschall durch Rotoren. 2021 der Paukenschlag: Ein massiver Rechenfehler wurde entlarvt. Die publizierten Werte waren um den Faktor 1.000 zu hoch berechnet worden.</div>
+                <div class="slide-fazit">Fazit: Wer an einer windigen Küste steht, ist oft mehr Infraschall ausgesetzt als neben einem modernen Windrad.</div>
             </div>
 
-            <div class="swiper-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('images/wind-myth.jpg'); background-size: cover; background-position: center;">
-                <div class="slide-title" style="color: #ffffff; text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">Widerstand gegen Windkraft</div>
-                <div class="slide-text" style="color: #e0e0e0; text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">
-                    Kaum eine Technologie der Energiewende wurde so stark bekämpft. Die zwei dominierenden Sorgen der Vergangenheit: Die Anlagen seien lebensgefährliche „Vogelschredder“ und würden uns durch unsichtbaren, tieffrequenten Lärm (Infraschall) systematisch krank machen. Aber was sagen die echten Daten?
-                </div>
+            <div class="swiper-slide theme-auto" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('images/auto-collage.jpg'); background-size: cover; background-position: center;">
+                <div class="slide-title">Der E-Auto-Mythos</div>
+                <div class="slide-text">„Die Batterieproduktion ist viel zu schädlich!“ – Mit diesem Argument, gestützt auf veraltete Studien und Berechnungen mit reinem Kohlestrom, wurde das Elektroauto lange als Klimakiller abgestempelt. Heute gelten diese Rechnungen wissenschaftlich als überholt.</div>
+                <div class="slide-fazit">Zusammenfassung: Der sogenannte „ökologische Rucksack“ der Batterien schrumpft durch technische Fortschritte rasant.</div>
             </div>
 
-            <div class="swiper-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('images/birds.jpg'); background-size: cover; background-position: center;">
-                <div class="slide-title" style="color: #ffffff; text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">Die wahren Gefahren für Vögel</div>
-                <div class="slide-text" style="color: #e0e0e0; text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">
-                    Jeder tote Vogel ist einer zu viel. Doch oft fehlen in der Debatte die Relationen: Laut NABU sterben in Deutschland jährlich ca. 100.000 Vögel an Windrädern. Zum Vergleich: Über 100 Millionen Vögel sterben an Glasscheiben und Gebäuden – und bis zu 200 Millionen werden das Opfer von Hauskatzen. Die größte Bedrohung für die Artenvielfalt bleibt jedoch die Erwärmung der Ökosysteme.
-                </div>
+            <div class="swiper-slide theme-auto" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('images/auto-lifecycle.jpg'); background-size: cover; background-position: center;">
+                <div class="slide-title">Die echte Klimabilanz</div>
+                <div class="slide-text">Moderne Lebenszyklusanalysen beweisen: Selbst mit dem aktuellen deutschen Strommix hat ein E-Auto seinen anfänglichen Rückstand aus der Produktion nach wenigen Zehntausend Kilometern aufgeholt. Danach fährt es im Vergleich zum Verbrenner gewaltige CO2-Ersparnisse ein.</div>
+                <div class="slide-fazit">Fazit: Über die gesamte Lebensdauer gerechnet, ist das E-Auto dem Verbrenner massiv überlegen.</div>
             </div>
 
-            <div class="swiper-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('images/infrasound.jpg'); background-size: cover; background-position: center;">
-                <div class="slide-title" style="color: #ffffff; text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">Der 1.000-fache Rechenfehler</div>
-                <div class="slide-text" style="color: #e0e0e0; text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">
-                    Jahrelang warnte eine Bundesbehörde (BGR) vor gefährlichem Infraschall durch Rotoren. 2021 der Paukenschlag: Ein massiver Rechenfehler wurde aufgedeckt. Die Werte waren um den Faktor 1.000 zu hoch! Die Realität: Wer an einer windigen Küste steht oder im Auto fährt, ist oft mehr Infraschall ausgesetzt als in der Nähe eines modernen Windrads.
-                </div>
+            <div class="swiper-slide theme-grid" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('images/grid-collage.jpg'); background-size: cover; background-position: center;">
+                <div class="slide-title">Das Blackout-Schreckgespenst</div>
+                <div class="slide-text">Kritiker warnten lautstark, dass eine Industrienation nicht mit schwankendem Solar- und Windstrom funktionieren kann. Die Angst vor der „Dunkelflaute“ und ständigen, flächendeckenden Stromausfällen (Blackouts) wurde aktiv geschürt.</div>
+                <div class="slide-fazit">Zusammenfassung: Die These lautete: „Mehr Erneuerbare bedeuten ein kollabierendes Stromnetz.“</div>
             </div>
-            
+
+            <div class="swiper-slide theme-grid" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('images/grid-stable.jpg'); background-size: cover; background-position: center;">
+                <div class="slide-title">Weltmeister in Stabilität</div>
+                <div class="slide-text">Die Praxis zeigt das Gegenteil: 2023 lieferten Erneuerbare Energien über 50 % unseres Stroms. Gleichzeitig ist das deutsche Netz so stabil wie fast nirgendwo sonst. Der durchschnittliche Stromausfall pro Kunde (SAIDI-Wert) liegt bei extrem niedrigen 12 Minuten im Jahr.</div>
+                <div class="slide-fazit">Fazit: Intelligente Netzsteuerung hat bewiesen, dass Versorgungssicherheit und Erneuerbare perfekt harmonieren.</div>
             </div>
+
+        </div>
         
         <div class="swiper-pagination"></div>
     </div>
@@ -112,11 +151,11 @@
 
     <script>
         var swiper = new Swiper(".mySwiper", {
-            direction: "horizontal", /* Wischrichtung: horizontal oder vertical */
-            loop: false, /* 'true' für Endlos-Wischen, 'false' für Stopp am letzten Slide */
+            direction: "horizontal",
+            loop: false,
             pagination: {
                 el: ".swiper-pagination",
-                clickable: true, /* Erlaubt das Klicken auf die Punkte */
+                clickable: true,
             },
         });
     </script>
